@@ -1,7 +1,10 @@
 {
-	"name": "cookiecutter-wrapper",
-	"displayName": "cookiecutter-wrapper",
-	"description": "Simple extension to create new projects from cookiecutter's templates",
+	"name": "cookiecutter-extension",
+	"displayName": "cookiecutter-extension",
+	"description": "Extension to create new projects from cookiecutter's templates",
+	"repository": {
+		"url": "https://github.com/ctgjdw/vscode-cookiecutter-extension"
+	},
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.48.0"
@@ -17,21 +20,21 @@
 	"main": "./out/extension.js",
 	"contributes": {
 		"viewsContainers": {
-            "activitybar": [
-                {
-                    "id": "cookiecutter",
-                    "title": "Cookiecutter",
-                    "icon": "resources/cookies.svg"
-                }
-            ]
-        },
-        "views": {
-            "cookiecutter": [
-                {
-                    "id": "cookiecutterTemplates",
-                    "name": "Templates"
-                }
-            ]
+			"activitybar": [
+				{
+					"id": "cookiecutter",
+					"title": "Cookiecutter",
+					"icon": "resources/cookies.svg"
+				}
+			]
+		},
+		"views": {
+			"cookiecutter": [
+				{
+					"id": "cookiecutterTemplates",
+					"name": "Templates"
+				}
+			]
 		},
 		"menus": {
 			"view/title": [
@@ -43,56 +46,61 @@
 			],
 			"view/item/context": [
 				{
-				  "command": "cookiecutter-wrapper.run",
-				  "when": "view == cookiecutterTemplates",
-				  "group": "inline"
+					"command": "cookiecutter-wrapper.run",
+					"when": "view == cookiecutterTemplates",
+					"group": "inline"
 				}
 			]
 		},
 		"commands": [
 			{
 				"command": "cookiecutter-wrapper.run",
-				"title": "Generate project",
+				"title": "Cookiecutter: Generate project",
 				"icon": {
 					"light": "resources/run-light.svg",
 					"dark": "resources/run-dark.svg"
-				  }
+				}
 			},
 			{
-                "command": "cookiecutter-wrapper.refresh",
-                "title": "Refresh",
-                "icon": {
-                    "light": "resources/refresh-light.svg",
-                    "dark": "resources/refresh-dark.svg"
-                }
-            }
+				"command": "cookiecutter-wrapper.refresh",
+				"title": "Cookiecutter: Refresh template settings",
+				"icon": {
+					"light": "resources/refresh-light.svg",
+					"dark": "resources/refresh-dark.svg"
+				}
+			}
 		],
 		"configuration": [
 			{
 				"title": "Cookiecutter",
 				"properties": {
 					"cookiecutter.baseDir": {
-						"type":"string",
+						"type": "string",
 						"default": "",
-						"description": "Folder where new projects will be saved to",
+						"description": "Folder where generated projects will be saved to",
 						"scope": "application"
 					},
 					"cookiecutter.templates": {
 						"type": "array",
-						"description": "Cookiecutter templates list",
+						"description": "Cookiecutter template configurations",
 						"scope": "application",
 						"items": {
 							"type": "object",
 							"properties": {
-								"title": { "type": "string" },
-								"url": { "type": "string" }
+								"title": {
+									"type": "string"
+								},
+								"url": {
+									"type": "string"
+								}
 							},
 							"additionalProperties": false
 						},
 						"default": [
-							{"title": "Python", "url": "https://github.com/sbugallo/cookiecutter-python"},
-							{"title": "Angular", "url": "https://github.com/sbugallo/cookiecutter-angular"},
-							{"title": "C++", "url": "https://github.com/sbugallo/cookiecutter-cpp"}
+							{
+								"title": "Python",
+								"url": "https://github.com/audreyfeldroy/cookiecutter-pypackage"
+							}
 						]
 					}
 				}
@@ -108,13 +116,13 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.48.0",
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.0.0",
 		"@types/node": "^14.0.27",
-		"eslint": "^7.6.0",
+		"@types/vscode": "^1.48.0",
 		"@typescript-eslint/eslint-plugin": "^3.8.0",
 		"@typescript-eslint/parser": "^3.8.0",
+		"eslint": "^7.6.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.0.1",
 		"typescript": "^3.8.3",

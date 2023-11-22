@@ -17,7 +17,7 @@ export class CookiecutterTemplatesProvider implements vscode.TreeDataProvider<De
   readonly onDidChangeTreeData: vscode.Event<Dependency | undefined> = this._onDidChangeTreeData.event;
 
   refresh(): void {
-    this._onDidChangeTreeData.fire();
+    this._onDidChangeTreeData.fire(undefined);
   }
 }
 
