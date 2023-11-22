@@ -21,9 +21,7 @@ This extension contributes the following settings:
 
 ## To Build
 
-1. Install `@vscode/vsce` package
-> `npm install -g @vscode/vsce`
-1. Run `vsce package` to output the `.vsix` extension
+1. Run `npm run package` to output the `.vsix` extension
 
 ## Release Notes
 ### 1.0.0
